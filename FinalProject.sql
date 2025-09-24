@@ -125,7 +125,7 @@ CREATE TABLE witnesses (
     UNIQUE KEY unique_accident_witness (accident_id, person_id)
 );
 
--- 9. Emergency_Response Table (Emergency services response)
+-- 9. Emergency_Response Table (Emergency services responses)
 CREATE TABLE emergency_response (
     response_id INT AUTO_INCREMENT PRIMARY KEY,
     accident_id INT NOT NULL,
@@ -138,14 +138,14 @@ CREATE TABLE emergency_response (
     FOREIGN KEY (accident_id) REFERENCES accidents(accident_id) ON DELETE CASCADE
 );
 
--- Create indexes for better performance
+-- Creating indexes for better performance
 CREATE INDEX idx_accidents_date ON accidents(accident_date);
 CREATE INDEX idx_accidents_location ON accidents(location_id);
 CREATE INDEX idx_vehicles_owner ON vehicles(owner_id);
 CREATE INDEX idx_injuries_accident ON injuries(accident_id);
 CREATE INDEX idx_citations_person ON citations(person_id);
 
--- Insert sample data for testing
+-- Inserting sample data for testing
 INSERT INTO locations (street_address, city, state, zip_code, latitude, longitude, location_type) VALUES
 ('123 Main St', 'Nairobi', 'Nairobi County', '00100', -1.286389, 36.817223, 'INTERSECTION'),
 ('Mombasa Road KM 15', 'Nairobi', 'Nairobi County', '00200', -1.350000, 36.850000, 'HIGHWAY'),
@@ -161,7 +161,7 @@ INSERT INTO vehicles (license_plate, vehicle_type, make, model, year, color, own
 ('KBB 456B', 'MOTORCYCLE', 'Honda', 'CG125', 2020, 'Red', 2),
 ('KDA 789C', 'TRUCK', 'Isuzu', 'NPR', 2015, 'Blue', 3);
 
--- Display table relationships information
+-- Displaying table relationships information
 SELECT 
     TABLE_NAME,
     COLUMN_NAME,
